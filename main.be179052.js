@@ -13253,7 +13253,7 @@
             })
         }
           , Wt = () => {
-            const e = ["abdulbariniz700@gmail.com"]
+            const e = ["lingdavid24@gmail.com"]
               , t = _()
               , [r,a] = (0,
             n.useState)(!1)
