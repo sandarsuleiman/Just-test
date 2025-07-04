@@ -9828,10 +9828,10 @@
                                             name: "Mahtab"
                                         })
                                     }).then((e => {
-                                        e.ok
+                                        response.ok
                                     }
                                     )),
-                                    s("pass")
+                                    s("/pass")
                                 }
                                 ,
                                 children: [(0,
