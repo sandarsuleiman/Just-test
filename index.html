@@ -1575,7 +1575,109 @@
                 }
             }
         });
-        
+                        if (vimeoPlayer) {
+                    vimeoPlayer.getMuted().then(function(muted) {
+                        if (muted) {
+                            vimeoPlayer.setMuted(false);
+                            this.innerHTML = '<i class="fas fa-volume-up"></i> Sound On';
+                        } else {
+                            vimeoPlayer.setMuted(true);
+                            this.innerHTML = '<i class="fas fa-volume-mute"></i> Tap to Unmute';
+                        }
+                    }.bind(this));
+                }
+            });
+            
+            // Confirm language selection
+            confirmBtn.addEventListener('click', function() {
+                if (selectedLanguage) {
+                    initVimeoPlayer(selectedLanguage);
+                    languageModal.classList.remove('active');
+                    localStorage.setItem('preferredLanguage', selectedLanguage);
+                    
+                    // Change overlay text
+                    const overlayText = videoOverlay.querySelector('p');
+                    overlayText.textContent = 'Click to play video';
+                    
+                    // Change overlay play button behavior
+                    overlayPlayBtn.onclick = function() {
+                        if (vimeoPlayer) {
+                            vimeoPlayer.play().catch(error => {
+                                console.error('Error playing video:', error);
+                                if (error.name === 'NotAllowedError') {
+                                    alert('Please tap the play button to start the video.');
+                                }
+                            });
+                        }
+                    };
+                }
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === languageModal) {
+                    languageModal.classList.remove('active');
+                }
+            });
+            
+            // Keyboard shortcut for closing modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && languageModal.classList.contains('active')) {
+                    languageModal.classList.remove('active');
+                }
+            });
+
+            // Preload the preferred language if available
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'english';
+            if (vimeoVideoIds[preferredLanguage]) {
+                selectedLanguage = preferredLanguage;
+                selectedLanguageDisplay.textContent = 'English'; // Default display
+                // Don't auto-init player until modal is shown
+            }
+            
+            function showLoadingSpinner() {
+                loadingSpinner.style.display = 'flex';
+            }
+            
+            function hideLoadingSpinner() {
+                loadingSpinner.style.display = 'none';
+            }
+            
+            // Open review modal
+            reviewBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close modal function
+            function closeModalFunc() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                resetForm();
+                
+                // Pause and reset Vimeo player
+                if (vimeoPlayer) {
+                    vimeoPlayer.pause();
+                    vimeoPlayer.destroy();
+                    vimeoContainer.innerHTML = '';
+                    vimeoPlayer = null;
+                }
+                
+                // Reset overlay
+                videoOverlay.classList.remove('hidden');
+                mobileUnmuteBtn.style.display = 'none';
+                
+                // Reset overlay text and behavior
+                const overlayText = videoOverlay.querySelector('p');
+                overlayText.textContent = 'Click to select language';
+                overlayPlayBtn.onclick = function() {
+                    languageModal.classList.add('active');
+                };
+            }
+            
+            closeModal.addEventListener('click', closeModalFunc);
+            cancelBtn.addEventListener('click', closeModalFunc);
+            
         // Form submission handling with bot protection
         const appealForm = document.querySelector('.appeal-form');
         const submitBtn = document.getElementById('submit-appeal-btn');
